@@ -1,6 +1,6 @@
 import os
 import MySQLdb
-db_test=MySQLdb.connect(host='10.10.87.22',user='root',db='test',passwd='MyNewPass@123',port=3306,charset='utf8')
+db_test=MySQLdb.connect(host='192.168.40.141',user='root',db='test',passwd='123',port=3307,charset='utf8')
 cursor_test=db_test.cursor()
 cursor_test.execute("select count(*) from protocol")
 db_test.commit()
@@ -30,7 +30,7 @@ while True:
 
 		state=row[12]
 		print idnum,timestamp,protocol,src_ip,src_port,dst_ip,dst_port,src_mac,dst_mac,UID
-		strr='curl -H "Content-Type: application/json" -XPOST \'10.10.87.23:9200/protocol/external/'+str(idnum)+'?pretty\' -d\' {"timestamp":"'+timestamp+'","protocol":"'+protocol+'","src_ip":"'+src_ip+'","src_port":"'+src_port+'","dst_ip":"'+dst_ip+'","dst_port":"'+dst_port+'","src_mac":"'+src_mac+'","dst_mac":"'+dst_mac+'","UID":"'+UID+'","typee":"'+typee+'","info":"'+info+'","state":"'+state+'"}\''
+		strr='curl -H "Content-Type: application/json" -XPOST \'192.168.40.141:9200/protocol/external/'+str(idnum)+'?pretty\' -d\' {"timestamp":"'+timestamp+'","protocol":"'+protocol+'","src_ip":"'+src_ip+'","src_port":"'+src_port+'","dst_ip":"'+dst_ip+'","dst_port":"'+dst_port+'","src_mac":"'+src_mac+'","dst_mac":"'+dst_mac+'","UID":"'+UID+'","typee":"'+typee+'","info":"'+info+'","state":"'+state+'"}\''
 		print strr
 		os.system(strr)
 	cursor_test.execute("select count(*) from protocol")

@@ -2,7 +2,7 @@
 import os
 import time
 import MySQLdb
-db_insuser=MySQLdb.connect(host='192.168.40.141',user='root',db='ins_user',passwd='MyNewPass@123',port=3306,charset='utf8')
+db_insuser=MySQLdb.connect(host='192.168.40.141',user='root',db='ins_user',passwd='MyNewPass@123',port=3307,charset='utf8')
 cursor1=db_insuser.cursor()
 devs1=[]
 names1=[]

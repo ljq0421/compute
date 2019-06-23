@@ -19,9 +19,9 @@ int main(int argc, char* argv[])
 	MYSQL *conn;
 	MYSQL_RES *res;
 	MYSQL_ROW row;
-	char* server="10.10.87.22";
+	char* server="192.168.40.141";
 	char* user="root";
-	char* password="MyNewPass@123";
+	char* password="123";
 	char* database="test";
 	conn=mysql_init(NULL);
 	if(!mysql_real_connect(conn,server,user,password,database,0,NULL,0)){
@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
 			else if(num==4){	
 				char infoo[10240]={0};
 				int j=0,k=0;
-				printf("element:%s\n",element);
+				//printf("element:%s\n",element);
 				for(j=0;j<strlen(element);j++){
 					if(element[j]=='\''){
 						infoo[k++]='"';
@@ -111,7 +111,7 @@ int main(int argc, char* argv[])
 					}
 					else infoo[k++]=element[j];
 				}
-				printf("infoo:%s\n",infoo);
+				//printf("infoo:%s\n",infoo);
 				info=infoo;
 				break;
 			}
@@ -228,7 +228,7 @@ int main(int argc, char* argv[])
         if(strcmp("NULL",type)==0) strcpy(infoo,"");
 
 		sprintf(query2,"insert into protocol(name,timestamp,proto,src_ip,src_port,dst_ip,dst_port,src_mac,dst_mac,type,info) values ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",name,timestamp,proto,src_ip,src_port,dst_ip,dst_port,src_mac,dst_mac,type,infoo);
-		printf("query2=%s\n",query2);
+		//printf("query2=%s\n",query2);
 		int t2=mysql_query(conn,query2); 
 		if(t2)
 		{
